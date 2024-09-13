@@ -241,6 +241,10 @@ export async function readItem(
       if (item.runeword_id == 2718) {
         item.runeword_id = 48;
       }
+      // if the first 4 bits are 1010, then the saved number is 2588 higher than in should be
+      if (item.runeword_id >> 8 == 10) {
+        item.runeword_id = item.runeword_id - 2588;
+      }
       if (constants.runewords[item.runeword_id]) {
         item.runeword_name = constants.runewords[item.runeword_id]!.n!;
       }
